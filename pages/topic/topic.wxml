@@ -1,0 +1,109 @@
+<view class="container">
+    <!--view class="header">话题 {{topic}}</view-->
+    <scroll-view class="chat-box" scroll-y="{{true}}" scroll-into-view="recordBottomScroll">
+        <view class="message" wx:for="{{messages}}" wx:key="id">
+            <!-- 这是用户的发言 -->
+            <view class="text" wx:if="{{item.type=='say'}}">                 
+                <view style="display: flex; flex-direction: row-reverse">
+                    <view class="user" wx:if="{{item.type=='say'}}">
+                        <!--{{item.user}}-->
+                        <t-icon name="/images/1.png" data-name="wave" bind:click="onIconTap" size="48rpx" />
+                    </view>
+                    <view style="height: 24px; width: 350rpx; background-color:whitesmoke;border-radius: 12px; padding-inline: 5px;margin-right: 10px;">
+                        <view style="display: inline-flex; flex-direction: row-reverse; margin: 5px 5px;">
+                            <t-icon name="play-circle-filled" size="30rpx" data-name="play-circle-filled" bind:click="onIconTap" />
+                            <label style="margin-top:-4px;margin-right: 5px; height: 30rpx;">{{0.05}}</label>
+                            <t-icon name="/images/wave.png" data-name="wave" bind:click="onIconTap" style="width: 180rpx;height: 30rpx;" />
+                            <t-icon name="sound" size="30rpx" data-name="sound" bind:click="onIconTap" />                        
+                        </view>
+                    </view>
+                </view>
+                <view style="display: flex; flex-direction:row-reverse;">
+                    <t-textarea autosize="{{true}}" value="{{item.text}}" style="background-color: transparent;resize: none;width: 100%;"></t-textarea>
+                </view>
+                <view style="display: flex; flex-direction: row-reverse">
+                    <t-icon name="share" size="48rpx" data-name="share" bind:click="onIconTap" />
+                    <t-icon name="file-copy" size="48rpx" data-name="file-copy" bind:click="onIconTap" />
+                    <label style="width: 100%;"></label>
+                    <label>10:53</label>
+                </view>
+            </view>
+
+            <!-- 这是AI的响应文档-->
+            <view style="height: 5px;"></view>
+
+
+            <view class="textAI" wx:if="{{item.type=='echo'}}">
+                <view  style="display: inline-flex; flex-direction: row; padding-inline: 1px;">
+                    <view class="userAI" wx:if="{{item.type=='echo'}}">
+                        <!--{{item.user}}-->
+                        <t-icon name="/images/ai.png" data-name="wave" bind:click="onIconTap" size="48rpx" />
+                    </view>
+                    <view style="height: 24px; width: 350rpx; background-color:#FFA31A;border-radius: 12px; padding-inline: 5px;margin-left: 10px;">
+                        <view style="display: inline-flex; flex-direction: row; margin: 5px 5px;">
+                            <t-icon name="play-circle-filled" size="30rpx" data-name="play-circle-filled" bind:click="onIconTap" />
+                            <label style="margin-top:-4px;margin-left: 5px; height: 30rpx;">{{0.05}}</label>
+                            <t-icon name="/images/wave.png" data-name="wave" bind:click="onIconTap" style="width: 180rpx;height: 30rpx;" />
+                            <t-icon name="sound" size="30rpx" data-name="sound" bind:click="onIconTap" />                        
+                        </view>
+                    </view>
+                </view>
+
+                <view style="display: flex; flex-direction:row;"> 
+                    <t-textarea autosize="{{true}}" value="{{item.text}}" style="background-color: transparent;resize: none;width: 100%;"></t-textarea>
+                </view>
+                <view style="display: flex; flex-direction: row">
+                    <t-icon name="share" size="48rpx" data-name="share" bind:click="onIconTap" />
+                    <t-icon name="file-copy" size="48rpx" data-name="file-copy" bind:click="onIconTap" />
+                    <label style="width: 100%;"></label>
+                    <label>10:53</label>
+                </view>
+            </view>
+            <view style="height: 5px;"></view>
+
+        </view>
+        <view id="recordBottomScroll" style="width: 1rpx; height: 1rpx"></view>
+    </scroll-view>
+</view>
+
+<view class="chat-input-wrap">
+  <t-button
+    theme="primary"
+    shape="circle"
+    size="large"
+    catchtouchstart="startRecording"
+    catchtouchend="stopRecording"
+  >
+    <t-icon
+      wx:if="{{!isRecording}}"
+      name="microphone"
+      prefix="icon"
+      size="32rpx"
+    />
+    <t-icon wx:else name="sonic" prefix="icon" size="32rpx" />
+  </t-button>
+
+  <view class="chat-input">
+    <t-textarea
+      class="textarea"
+      placeholder="请输入文字"
+      disableDefaultPadding="{{true}}"
+      autosize="{{autosize}}"
+      bind:line-change="onLineChange"
+      bind:keyboardheightchange="onInputheightChange"
+      bindchange="onInput"
+      value="{{inputText}}"
+    />
+
+    <t-button
+      theme="text"
+      icon=""
+      shape="circle"
+      aria-label="搜索"
+      size="large"
+      bindtap="sendMessage"
+    >
+      <t-icon name="send" prefix="icon" size="48rpx" color="#FFA31A" />
+    </t-button>
+  </view>
+</view>

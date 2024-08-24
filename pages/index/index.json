@@ -1,0 +1,10 @@
+{
+    "component": true,
+    "navigationBarTitleText": "聊天记录",
+    "usingComponents": {
+		"t-icon": "tdesign-miniprogram/icon/icon",
+		"t-button": "tdesign-miniprogram/button/button",
+		"t-toast": "tdesign-miniprogram/toast/toast"
+	}
+
+}

@@ -1,0 +1,24 @@
+<view class="container">
+  <view class="setting-item">
+    <view class="title">对话难度</view>
+    <radio-group class="radio-group" bindchange="onDifficultyChange">
+      <label class="radio"><radio value="初级" checked="{{difficulty === '初级'}}"/> 初级</label>
+      <label class="radio"><radio value="中级" checked="{{difficulty === '中级'}}"/> 中级</label>
+      <label class="radio"><radio value="高级" checked="{{difficulty === '高级'}}"/> 高级</label>
+    </radio-group>
+  </view>
+  <view class="setting-item">
+    <view class="title">发声人物</view>
+    <radio-group class="radio-group" bindchange="onVoiceChange">
+      <label class="radio"><radio value="男性" checked="{{voice === '男性'}}"/> 男性</label>
+      <label class="radio"><radio value="女性" checked="{{voice === '女性'}}"/> 女性</label>
+    </radio-group>
+  </view>
+  <view class="setting-item">
+    <view class="title">口音</view>
+    <radio-group class="radio-group" bindchange="onAccentChange">
+      <label class="radio"><radio value="西班牙口音" checked="{{accent === '西班牙口音'}}"/> 西班牙口音</label>
+      <label class="radio"><radio value="拉丁美洲口音" checked="{{accent === '拉丁美洲口音'}}"/> 拉丁美洲口音</label>
+    </radio-group>
+  </view>
+</view>

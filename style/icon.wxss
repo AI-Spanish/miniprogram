@@ -1,0 +1,25 @@
+@font-face {
+  font-family: "icon";
+  /* Project id 4645788 */
+  src: url('//at.alicdn.com/t/c/font_4645788_3npedomp0ah.woff2?t=1723292770746') format('woff2');
+}
+
+.icon {
+  font-family: "icon" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-sonic:before {
+  content: "\e6a9";
+}
+
+.icon-microphone:before {
+  content: "\e600";
+}
+
+.icon-send:before {
+  content: "\e641";
+}

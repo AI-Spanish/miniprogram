@@ -1,0 +1,15 @@
+<view class="container">
+    <view class="record-item" bindtap="navigateToTopic" data-topic="回顾">
+        <view class="title">本周学习回顾</view>
+        <view class="chart">
+            <canvas style="width: 400px;"  canvas-id="c1"></canvas>
+        </view>
+    </view>
+
+    <view class="record-item" bindtap="navigateToTopic" data-topic="单词">
+        <view class="title">累积学习单词</view>
+        <view class="chart">
+            <canvas style="width: 200px;"  canvas-id="c2"></canvas>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,19 @@
+.titleBar {
+	margin: 30rpx 0;
+}
+
+.title {
+	font-size: 32px;
+	font-weight: 700;
+	text-align: center;
+}
+
+.subTitle {
+	color: #616161;
+	font-size: 16px;
+	margin-top: 20rpx;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}

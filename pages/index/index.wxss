@@ -1,0 +1,80 @@
+.container {
+    display: flex;
+    flex-flow: nowrap column;
+    height: 90rpx;
+}
+
+.topics {
+    display: flex;
+    flex-flow: nowrap column;
+    width: 91%;
+    margin-top: -40rpx;
+}
+
+.topics button{    
+    margin: 10px 0;
+    background-color: transparent;
+    border-radius: 5px;
+}
+
+.cell {
+    position: absolute;
+    z-index: 1;
+    background-color:transparent;
+    height: 72px;
+}
+
+.cell-label {
+    display:flex;
+    color: rgba(0, 0, 255, 0.6);
+    text-align: left;
+    vertical-align: top;
+    margin-top: 0;
+    margin-left: 0;    
+    font-size: 12px;
+}
+
+.cell-content {
+    display:flex;
+    flex-direction: row;
+    color: rgba(255, 0, 0, 0.9);
+    font-size: 25px;
+    margin-top: -30rpx;
+    margin-left: 0rpx;
+    vertical-align: center;
+}
+
+.img {
+    position:relative;
+    margin-left: 80%;
+    margin-top: 1rpx;
+    margin-bottom: 1rpx;
+    z-index: 2;
+    background-color: transparent;
+    display:flex;
+    flex-direction: row row-reverse;
+    /*border: 1px solid red ;*/
+    height: 64px;
+    width: 64px;
+}
+
+.img image{
+    height: 64px;
+    width: 64px;
+}
+
+.header {
+    font-size: 24px;
+    margin: 20px 0;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    background-color: #fff;
+    padding: 10px 0;
+}
+

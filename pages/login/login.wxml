@@ -1,0 +1,14 @@
+<view class="container" style="margin-top: {{navigationBarHeight}}px;">
+  <view class="main">
+    <view class="titleBar">
+      <view class="title"> Welcome to AI 西语</view>
+      <view class="subTitle">
+        <text>You can ask me anything.</text>
+        <text> Start chatting with AI now.</text>
+      </view>
+    </view>
+    <t-button theme="primary" size="large" block bind:tap="wxLoginFake"
+      >Get started
+    </t-button>
+  </view>
+</view>

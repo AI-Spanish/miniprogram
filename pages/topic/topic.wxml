@@ -3,18 +3,18 @@
     <scroll-view class="chat-box" scroll-y="{{true}}" scroll-into-view="recordBottomScroll">
         <view class="message" wx:for="{{messages}}" wx:key="id">
             <!-- 这是用户的发言 -->
-            <view class="text" wx:if="{{item.type=='say'}}">                 
+            <view class="text" wx:if="{{item.type=='say'}}">
                 <view style="display: flex; flex-direction: row-reverse">
                     <view class="user" wx:if="{{item.type=='say'}}">
                         <!--{{item.user}}-->
-                        <t-icon name="/images/1.png" data-name="wave" bind:click="onIconTap" size="48rpx" />
+                        <t-icon name="/images/1.png" data-name="user" bind:click="onIconTap" size="48rpx" />
                     </view>
                     <view style="height: 24px; width: 350rpx; background-color:whitesmoke;border-radius: 12px; padding-inline: 5px;margin-right: 10px;">
                         <view style="display: inline-flex; flex-direction: row-reverse; margin: 5px 5px;">
-                            <t-icon name="play-circle-filled" size="30rpx" data-name="play-circle-filled" bind:click="onIconTap" />
+                            <t-icon name="play-circle-filled" size="30rpx" data-name="play-circle-filled" data-id="{{item.id}}" bind:click="onIconTap" />
                             <label style="margin-top:-4px;margin-right: 5px; height: 30rpx;">{{0.05}}</label>
-                            <t-icon name="/images/wave.png" data-name="wave" bind:click="onIconTap" style="width: 180rpx;height: 30rpx;" />
-                            <t-icon name="sound" size="30rpx" data-name="sound" bind:click="onIconTap" />                        
+                            <t-icon name="/images/wave.png" data-name="wave" data-id="{{item.id}}" bind:click="onIconTap" style="width: 180rpx;height: 30rpx;" />
+                            <t-icon name="sound" size="30rpx" data-name="sound" data-id="{{item.id}}" bind:click="onIconTap" />
                         </view>
                     </view>
                 </view>
@@ -24,8 +24,8 @@
                 </view>
 
                 <view style="display: flex; flex-direction: row-reverse">
-                    <t-icon name="share" size="48rpx" data-name="share" bind:click="onIconTap" />
-                    <t-icon name="file-copy" size="48rpx" data-name="file-copy" bind:click="onIconTap" />
+                    <button plain="true" open-type="share" style="border:none; background-color: transparent; height: 48rpx; width: 80rpx; padding: 0%;"><t-icon name="share" size="48rpx"/></button>
+                    <t-icon name="file-copy" size="48rpx" data-name="file-copy" data-id="{{item.id}}" bind:click="onIconTap" />
                     <label style="width: 100%;"></label>
                     <label>10:53</label>
                 </view>
@@ -39,14 +39,14 @@
                 <view  style="display: inline-flex; flex-direction: row; padding-inline: 1px;">
                     <view class="userAI" wx:if="{{item.type=='echo'}}">
                         <!--{{item.user}}-->
-                        <t-icon name="/images/ai.png" data-name="wave" bind:click="onIconTap" size="48rpx" />
+                        <t-icon name="/images/ai.png" data-name="ai" bind:click="onIconTap" size="48rpx" />
                     </view>
                     <view style="height: 24px; width: 350rpx; background-color:#FFA31A;border-radius: 12px; padding-inline: 5px;margin-left: 10px;">
                         <view style="display: inline-flex; flex-direction: row; margin: 5px 5px;">
-                            <t-icon name="play-circle-filled" size="30rpx" data-name="play-circle-filled" bind:click="onIconTap" />
+                            <t-icon name="play-circle-filled" size="30rpx" data-name="play-circle-filled" data-id="{{item.id}}" bind:click="onIconTap" />
                             <label style="margin-top:-4px;margin-left: 5px; height: 30rpx;">{{0.05}}</label>
-                            <t-icon name="/images/wave.png" data-name="wave" bind:click="onIconTap" style="width: 180rpx;height: 30rpx;" />
-                            <t-icon name="sound" size="30rpx" data-name="sound" bind:click="onIconTap" />                        
+                            <t-icon name="/images/wave.png" data-name="wave" data-id="{{item.id}}" bind:click="onIconTap" style="width: 180rpx;height: 30rpx;" />
+                            <t-icon name="sound" size="30rpx" data-name="sound" data-id="{{item.id}}" bind:click="onIconTap" /> 
                         </view>
                     </view>
                 </view>
@@ -56,8 +56,8 @@
                 </view>
 
                 <view style="display: flex; flex-direction: row">
-                    <t-icon name="share" size="48rpx" data-name="share" bind:click="onIconTap" />
-                    <t-icon name="file-copy" size="48rpx" data-name="file-copy" bind:click="onIconTap" />
+                    <button plain="true" open-type="share" style="border:none; background-color: transparent; height: 48rpx; width: 80rpx; padding: 0%;"><t-icon name="share" size="48rpx"/></button>
+                    <t-icon name="file-copy" size="48rpx" data-name="file-copy" data-id="{{item.id}}" bind:click="onIconTap" />
                     <label style="width: 100%;"></label>
                     <label>10:53</label>
                 </view>

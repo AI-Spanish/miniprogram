@@ -103,7 +103,7 @@ Page({
       let ele = messages.find(e => e.id==id);
       if(ele== undefined){
         return;
-      }
+      } 
 
       //2 根据点击图标的类型，分别处理
       if(name=="sound") {

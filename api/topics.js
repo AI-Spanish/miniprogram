@@ -51,7 +51,7 @@ export function getAiEchoByMsg(msg) {
 export function postChatMsgToAi(msg) {
 	return request({
 		url: '/chat',
-		method: 'POST',
+		method: 'GET',
 		data: {
 			msg: msg
 		}

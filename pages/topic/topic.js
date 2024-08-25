@@ -59,7 +59,7 @@ Page({
 					this.setData({ messages, inputText: '' });
 				}).catch(err=>{
           console.log(err)
-					messages.push({ id: Date.now(), user: '西语AI', text: `出错了哦<img src="/images/1.PNG" style="width:100px" />`, type:'echo' });
+					messages.push({ id: Date.now(), user: '西语AI', text: `<div style="display:flex;align-items: center;">出错了哦...<img src="/images/err.jpg" style="height:48px" /></div>`, type:'echo' });
 					this.setData({ messages, inputText: '' });
 				}) 
 					

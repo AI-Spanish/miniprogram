@@ -72,8 +72,62 @@ Page({
         keyboardheight: e.detail.height ? `${e.detail.height + 20}px` : undefined,
       });
     },
+
     onLineChange(e) {
       //console.log("lineCount: ", e.detail);
+    },
+
+    //点击界面中的分享按钮
+    onShareAppMessage: function () {
+      return {
+        title: '转发给朋友', // 自定义转发标题
+        path: 'pages/index/index', // 自定义转发路径
+        success: function(res) {
+          // 转发成功后的回调函数
+        },
+        fail: function(res) {
+          // 转发失败后的回调函数
+        }
+      }
+    },
+
+    //点击界面中的图标（除分享），在此处理相关数据
+    onIconTap: function(e){
+      let target = e.target;
+      let data = target.dataset;
+      let id = data.id;     //界面中的消息ID
+      let name = data.name; //界面中的图标按钮类型
+
+      //1 从数据集合中线性查找，找到消息ID对应的消息
+      const { messages } = this.data;    //数据集合
+      let ele = messages.find(e => e.id==id);
+      if(ele== undefined){
+        return;
+      }
+
+      //2 根据点击图标的类型，分别处理
+      if(name=="sound") {
+        console.log("点击了声音按钮" + id);
+      }else if(name=="wave"){
+        console.log("点击了音频按钮" + id);
+      }else if(name=="play-circle-filled"){
+        console.log("点击了播放按钮" + id);
+      }else if(name=="file-copy"){
+        console.log(`拷贝内容:${ele.text}`);
+        wx.setClipboardData({
+          data: `${ele.text}`,
+          success(res){
+            wx.showToast({
+              title: '复制成功',
+              icon: 'success',
+              duration: 2000
+            })
+          },
+          fail(res){}
+        })
+      }
     }
+
+
   });
   

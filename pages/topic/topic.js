@@ -33,28 +33,33 @@ Page({
       this.setData({ inputText: str });
     },
 
+    //格式化多行文本
+    formatTxt: function(multiLineString){
+      return multiLineString.replace(/\n/g, '<br>');
+    },
+
     sendMessage() {
       const { inputText, messages } = this.data;
       let _inputText = inputText.trim();     //截断空格
       if (_inputText) {
-        messages.push({ id: Date.now(), user: '我', text: _inputText, type:'say' });
+        messages.push({ id: Date.now(), user: '我', text: this.formatTxt(_inputText), type:'say' });
 				//TODO 把inputText发到服务器，获取echo
 				postChatMsgToAi(_inputText).then(res=>{
           console.log(res)
           let obj = res   //let obj = JSON.parse(res)
 					if(obj.code == undefined || obj.code!=200){
               console.log(res.msg)
-              messages.push({ id: Date.now(), user: '西语AI', text: res.msg, type:'echo' });
+              messages.push({ id: Date.now(), user: '西语AI', text: this.formatTxt(res.msg), type:'echo' });
               this.setData({ messages, inputText: '' });
 							return
 					}
 					let rt = obj?.data
 					console.log(rt)
-					messages.push({ id: Date.now(), user: '西语AI', text: rt, type:'echo' });
+					messages.push({ id: Date.now(), user: '西语AI', text: this.formatTxt(rt), type:'echo' });
 					this.setData({ messages, inputText: '' });
 				}).catch(err=>{
           console.log(err)
-					messages.push({ id: Date.now(), user: '西语AI', text: '出错哦了', type:'echo' });
+					messages.push({ id: Date.now(), user: '西语AI', text: `出错了哦<img src="/images/1.PNG" style="width:100px" />`, type:'echo' });
 					this.setData({ messages, inputText: '' });
 				}) 
 					

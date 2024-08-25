@@ -18,9 +18,11 @@
                         </view>
                     </view>
                 </view>
-                <view style="display: flex; flex-direction:row-reverse;">
-                    <t-textarea autosize="{{true}}" value="{{item.text}}" style="background-color: transparent;resize: none;width: 100%;"></t-textarea>
+
+                <view style="padding: 10px;">
+                    <rich-text nodes="{{item.text}}" style="text-align: right;"></rich-text>
                 </view>
+
                 <view style="display: flex; flex-direction: row-reverse">
                     <t-icon name="share" size="48rpx" data-name="share" bind:click="onIconTap" />
                     <t-icon name="file-copy" size="48rpx" data-name="file-copy" bind:click="onIconTap" />
@@ -49,9 +51,10 @@
                     </view>
                 </view>
 
-                <view style="display: flex; flex-direction:row;"> 
-                    <t-textarea autosize="{{true}}" value="{{item.text}}" style="background-color: transparent;resize: none;width: 100%;"></t-textarea>
+                <view style="padding: 10px;">
+                    <rich-text nodes="{{item.text}}" ></rich-text>
                 </view>
+
                 <view style="display: flex; flex-direction: row">
                     <t-icon name="share" size="48rpx" data-name="share" bind:click="onIconTap" />
                     <t-icon name="file-copy" size="48rpx" data-name="file-copy" bind:click="onIconTap" />

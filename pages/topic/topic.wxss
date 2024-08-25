@@ -37,8 +37,8 @@
     border-radius: 10px;
     padding: 5px;
     background-color: #f7c98e;
-    margin-left: 1%;
-    width: 99%;
+    margin-left: 0%;
+    width: 100%;
 }
 
 .userAI {

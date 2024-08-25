@@ -85,5 +85,5 @@
 	flex: 1;
 	/* padding: 24rpx 24rpx !important; */
 	border-radius: 32rpx;
-
 }
+

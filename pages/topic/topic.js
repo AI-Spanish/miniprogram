@@ -42,27 +42,33 @@ Page({
       const { inputText, messages } = this.data;
       let _inputText = inputText.trim();     //截断空格
       if (_inputText) {
+        //1 刷新列表
         messages.push({ id: Date.now(), user: '我', text: this.formatTxt(_inputText), type:'say' });
-				//TODO 把inputText发到服务器，获取echo
-				postChatMsgToAi(_inputText).then(res=>{
-          console.log(res)
-          let obj = res   //let obj = JSON.parse(res)
-					if(obj.code == undefined || obj.code!=200){
-              console.log(res.msg)
-              messages.push({ id: Date.now(), user: '西语AI', text: this.formatTxt(res.msg), type:'echo' });
-              this.setData({ messages, inputText: '' });
-							return
-					}
-					let rt = obj?.data
-					console.log(rt)
-					messages.push({ id: Date.now(), user: '西语AI', text: this.formatTxt(rt), type:'echo' });
-					this.setData({ messages, inputText: '' });
-				}).catch(err=>{
-          console.log(err)
-					messages.push({ id: Date.now(), user: '西语AI', text: `<div style="display:flex;align-items: center;">出错了哦...<img src="/images/err.jpg" style="height:48px" /></div>`, type:'echo' });
-					this.setData({ messages, inputText: '' });
-				}) 
-					
+        this.setData({ messages, inputText: '' });
+
+        //2 把inputText发到服务器，获取echo
+        //  使用async是为了使用异步调用，以便让主线程能够先刷新一次列表。也可使用setTimeout(()=>{...},0)语法
+        (async ()=>{
+            postChatMsgToAi(_inputText).then(res=>{
+              console.log(res)
+              let obj = res   //let obj = JSON.parse(res)
+              if(obj.code == undefined || obj.code!=200){
+                  console.log(res.msg)
+                  messages.push({ id: Date.now(), user: '西语AI', text: this.formatTxt(res.msg), type:'echo' });
+                  this.setData({ messages});
+                  return
+              }
+              let rt = obj?.data
+              console.log(rt)
+              messages.push({ id: Date.now(), user: '西语AI', text: this.formatTxt(rt), type:'echo' });
+              this.setData({ messages});
+            }).catch(err=>{
+              console.log(err)
+              messages.push({ id: Date.now(), user: '西语AI', text: `<div style="display:flex;align-items: center;">出错了哦...<img src="/images/err.jpg" style="height:48px" /></div>`, type:'echo' });
+              this.setData({ messages});
+            })
+          } // end of postChatMsgToAi
+        )();  //end of async
       }
     },
 
@@ -78,7 +84,7 @@ Page({
     },
 
     //点击界面中的分享按钮
-    onShareAppMessage: function () {
+    onShareAppMessage() {
       return {
         title: '转发给朋友', // 自定义转发标题
         path: 'pages/index/index', // 自定义转发路径
@@ -92,7 +98,7 @@ Page({
     },
 
     //点击界面中的图标（除分享），在此处理相关数据
-    onIconTap: function(e){
+    onIconTap(e){
       let target = e.target;
       let data = target.dataset;
       let id = data.id;     //界面中的消息ID

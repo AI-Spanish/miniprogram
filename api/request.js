@@ -56,8 +56,10 @@ function addToken(params) {
     }
 }
 
+
+
 /**
- * 发起网络请求。会尝试对结果进行预处理。
+ * 发起网络同步请求。会尝试对结果进行预处理。
  * - 处理的返回值格式 {code: 200, message: "请求成功", data: {}}
  * 
  * @param {String} params.url 请求地址。例：http(s)://www.myapp.com/user/login; /user/login
@@ -74,25 +76,61 @@ export async function request(params) {
 		wx.request({
 			...params,
 			success: res => {
-				if (res.statusCode && res.statusCode == 200) {
-					if (res.data.code) {
-						const code = res.data.code;
-						if (code == 200) {
-							resolve(res.data.data);
-						} else {
-							reject(res.data);
-						}
-					} else {
-						resolve(res.data);
-					}
+        //参见微信小程序文档https://developers.weixin.qq.com/miniprogram/dev/api/network/request/wx.request.html
+        const {statusCode,data} = res;  //解构响应包
+				if (statusCode && statusCode == 200) {
+					resolve(data);
 				} else {
 					reject(res);
 				}
 			},
-			fail: reject
+      fail: reject,
+      complete:()=>{
+        console.log('request/' + Date.now())
+      }
 		})
 	}); 
 }
+
+
+/**
+ * 支持服务器端实现的流式响应（Server Side Event）
+ * 需要在onChunk里实现对流式响应内容的解析
+ * @param {} params URL等参数
+ * @param {*} onHeaders 处理流式响应头的函数,(res)=>{} 格式
+ * @param {*} onChunk 处理流式响应块的函数, (res)=>{} 格式
+ */
+export async function requestSSE(params,onHeaders,onChunk) {
+	return new Promise((resolve, reject) => {
+		try {
+			proProcessParams(params);
+		} catch(err) {
+			reject(err);
+    }
+
+		const requestTask =wx.request({
+      ...params,
+      enableChunked: true,  //接收流式响应
+      timeout: 15000,       //流式结束时间
+      responseType: "text", //responseType: "arraybuffer",
+			success: res => {
+        const {statusCode,data} = res;
+				if (statusCode && statusCode == 200) {
+          resolve(data);
+          requestTask.onHeadersReceived(onHeaders);
+          requestTask.onChunkReceived(onChunk);          
+				} else {
+					reject(res);
+				}
+			},
+      fail: reject,
+      complete:()=>{
+        console.log('requestSSE/' + Date.now())
+      }
+		})
+	}); 
+}
+
 
 /**
  * 

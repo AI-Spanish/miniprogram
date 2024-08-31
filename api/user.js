@@ -16,9 +16,10 @@ export function login() {
 	return new Promise(async (resolve, reject) => {
 		let wxLoginRes = await wx.login().catch(err => reject(err));
 		if (wxLoginRes) {
+            console.log(wxLoginRes);
 			let response = await request({
 				noToken: true,
-				url: '/user/login-wx',   //这里修改为咱们自己的微服务地址
+				url: '/login', 
 				method: "POST",
 				data: {
 					code: wxLoginRes.code

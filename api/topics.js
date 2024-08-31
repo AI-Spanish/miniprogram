@@ -37,6 +37,20 @@ export function getAiEchoByMP3(mp3Url) {
 export function getAiEchoByMsg(msg) {
 	return request({
 		url: '/tts',
+		method: 'POST',
+		data: {
+			msg: msg,
+		}
+	});
+}
+
+/**
+ * 
+ * @param {string} msg 
+ */
+export function getAiEchoStreamByMsg(msg) {
+	return request({
+		url: '/stream',
 		method: 'GET',
 		data: {
 			msg: msg,
@@ -51,9 +65,24 @@ export function getAiEchoByMsg(msg) {
 export function postChatMsgToAi(msg) {
 	return request({
 		url: '/chat',
-		method: 'GET',
+		method: 'POST',
 		data: {
 			msg: msg
+		}
+	});
+}
+
+
+/**
+ * 
+ * @param {string} msg 
+ */
+export function getAiEchoWavByMsg(msg) {
+	return request({
+		url: '/tts2',
+		method: 'POST',
+		data: {
+			msg: msg,
 		}
 	});
 }

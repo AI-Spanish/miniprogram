@@ -41,7 +41,14 @@
                         <!--{{item.user}}-->
                         <t-icon name="/images/ai.png" data-name="ai" bind:click="onIconTap" size="48rpx" />
                     </view>
-                    <view style="height: 24px; width: 350rpx; background-color:#FFA31A;border-radius: 12px; padding-inline: 5px;margin-left: 10px;">
+
+                    <view wx:if="{{item.wav==undefined}}" style="height: 24px; width: 180rpx; background-color:#FFA31A;border-radius: 12px; padding-inline: 5px;margin-left: 10px;">
+                        <view style="display: inline-flex; flex-direction: row; margin: 5px 5px;">
+                            <t-icon name="/images/wave.png" data-name="wave" data-id="{{item.id}}" bind:click="onIconTap" style="width: 180rpx;height: 30rpx;" />
+                        </view>
+                    </view>
+
+                    <view wx:else style="height: 24px; width: 350rpx; background-color:#FFA31A;border-radius: 12px; padding-inline: 5px;margin-left: 10px;">
                         <view style="display: inline-flex; flex-direction: row; margin: 5px 5px;">
                             <t-icon name="play-circle-filled" size="30rpx" data-name="play-circle-filled" data-id="{{item.id}}" bind:click="onIconTap" />
                             <label style="margin-top:-4px;margin-left: 5px; height: 30rpx;">{{0.05}}</label>
@@ -49,6 +56,7 @@
                             <t-icon name="sound" size="30rpx" data-name="sound" data-id="{{item.id}}" bind:click="onIconTap" /> 
                         </view>
                     </view>
+
                 </view>
 
                 <view style="padding: 10px;">

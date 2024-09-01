@@ -1,46 +1,46 @@
 {
-    "pages": [
-        "pages/index/index",
-        "pages/topic/topic",
-        "pages/records/records",
-        "pages/settings/settings",
-        "pages/login/login"
-    ],
-    "window": {
-		"backgroundTextStyle": "light",
-		"backgroundColor": "#f7c98e",
-		"navigationBarBackgroundColor": "#F8D7A2",
-		"navigationBarTitleText": "Weixin",
-		"navigationBarTextStyle": "black"
-    },
-    "componentFramework": "glass-easel",
-    "sitemapLocation": "sitemap.json",
-    "lazyCodeLoading": "requiredComponents",
-    "usingComponents": {},
-    "tabBar": {
-        "custom": true,
-        "list": [
-            {
-                "pagePath": "pages/login/login",
-                "text": "首页"
-            },
-            {
-              "pagePath": "pages/index/index",
-              "text": "聊天"
-            },
-            {
-                "pagePath": "pages/records/records",
-                "text": "情景"
-            },
-            {
-                "pagePath": "pages/settings/settings",
-                "text": "个人中心"
-            }
-        ]
-    },
-    "permission": {
-		"scope.userLocation": {
-			"desc": "你的位置信息将用于小程序位置接口的效果展示"
-		}
-	}
+  "pages": [
+    "pages/index/index",
+    "pages/topic/topic",
+    "pages/records/records",
+    "pages/settings/settings",
+    "pages/login/login"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "backgroundColor": "#f7c98e",
+    "navigationBarBackgroundColor": "#F8D7A2",
+    "navigationBarTitleText": "Weixin",
+    "navigationBarTextStyle": "black"
+  },
+  "componentFramework": "glass-easel",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents",
+  "usingComponents": {},
+  "tabBar": {
+    "custom": true,
+    "list": [
+      {
+        "pagePath": "pages/login/login",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "聊天"
+      },
+      {
+        "pagePath": "pages/records/records",
+        "text": "情景"
+      },
+      {
+        "pagePath": "pages/settings/settings",
+        "text": "个人中心"
+      }
+    ]
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  }
 }

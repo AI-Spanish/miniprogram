@@ -71,23 +71,23 @@ export async function request(params) {
 			proProcessParams(params);
 		} catch(err) {
 			reject(err);
-    }
+        }
         
 		wx.request({
 			...params,
 			success: res => {
-        //参见微信小程序文档https://developers.weixin.qq.com/miniprogram/dev/api/network/request/wx.request.html
-        const {statusCode,data} = res;  //解构响应包
+                //参见微信小程序文档https://developers.weixin.qq.com/miniprogram/dev/api/network/request/wx.request.html
+                const {statusCode,data} = res;  //解构响应包
 				if (statusCode && statusCode == 200) {
 					resolve(data);
 				} else {
 					reject(res);
 				}
 			},
-      fail: reject,
-      complete:()=>{
-        console.log('request/' + Date.now())
-      }
+            fail: reject,
+            complete:()=>{
+                console.log('request/' + Date.now())
+            }
 		})
 	}); 
 }
@@ -100,35 +100,38 @@ export async function request(params) {
  * @param {*} onHeaders 处理流式响应头的函数,(res)=>{} 格式
  * @param {*} onChunk 处理流式响应块的函数, (res)=>{} 格式
  */
-export async function requestSSE(params,onHeaders,onChunk) {
-	return new Promise((resolve, reject) => {
-		try {
-			proProcessParams(params);
-		} catch(err) {
-			reject(err);
-    }
+export async function requestSSE(params, onHeaders, onChunk) {
+    return new Promise((resolve, reject) => {
+        try {
+            proProcessParams(params);
+        } catch (err) {
+            reject(err);
+        }
 
-		const requestTask =wx.request({
-      ...params,
-      enableChunked: true,  //接收流式响应
-      timeout: 15000,       //流式结束时间
-      responseType: "text", //responseType: "arraybuffer",
-			success: res => {
-        const {statusCode,data} = res;
-				if (statusCode && statusCode == 200) {
-          resolve(data);
-          requestTask.onHeadersReceived(onHeaders);
-          requestTask.onChunkReceived(onChunk);          
-				} else {
-					reject(res);
-				}
-			},
-      fail: reject,
-      complete:()=>{
-        console.log('requestSSE/' + Date.now())
-      }
-		})
-	}); 
+        const requestTask = wx.request({
+            ...params,
+            enableChunked: true, //接收流式响应
+            timeout: 15000, //流式结束时间
+            responseType: "text", //responseType: "arraybuffer",
+            success: res => {
+                const {
+                    statusCode,
+                    data
+                } = res;
+                if (statusCode && statusCode == 200) {
+                    resolve(data);
+                    requestTask.onHeadersReceived(onHeaders);
+                    requestTask.onChunkReceived(onChunk);
+                } else {
+                    reject(res);
+                }
+            },
+            fail: reject,
+            complete: () => {
+                console.log('requestSSE/' + Date.now())
+            }
+        })
+    });
 }
 
 

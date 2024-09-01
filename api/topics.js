@@ -37,7 +37,7 @@ export function getAiEchoByMP3(mp3Url) {
 export function getAiEchoByMsg(msg) {
 	return request({
 		url: '/tts',
-		method: 'POST',
+		method: 'GET',
 		data: {
 			msg: msg,
 		}
@@ -65,7 +65,7 @@ export function getAiEchoStreamByMsg(msg) {
 export function postChatMsgToAi(msg) {
 	return request({
 		url: '/chat',
-		method: 'POST',
+		method: 'GET',
 		data: {
 			msg: msg
 		}

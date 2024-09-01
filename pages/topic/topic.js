@@ -5,7 +5,6 @@ Page({
       topic: '',      //标题
       messages: [],   //消息流
       inputText: '',  //输入
-      inputMp3Path: undefined, //mp3输入
       isRecording: false,      //是否正在录音
 
       autosize: {
@@ -48,19 +47,27 @@ Page({
     },
 
     sendVoice(res){
+      var that = this;
       console.log(res);
-      this.setData({
-        inputMp3Path: res.tempFilePath,
-        isRecording: false
-      });
-      wx.showToast({
-        title: '录音完成！',
-      })
+      wx.saveFile({        
+        tempFilePath: res.tempFilePath,
+        success:(res)=>{
+          var inputMp3Path = res.savedFilePath;
 
-      //刷新列表
-      const { messages , inputMp3Path} = this.data;
-      messages.push({ id: Date.now(), user: '我', text: this.formatTxt('[语音]'), type:'say', wav: inputMp3Path});
-      this.setData({ messages, inputText: '' });
+          that.setData({
+            isRecording: false
+          });
+
+          wx.showToast({
+            title: '录音完成！',
+          })
+    
+          //刷新列表
+          const { messages} = that.data;
+          messages.push({ id: Date.now(), user: '我', text: that.formatTxt('[语音]'), type:'say', wav: inputMp3Path});
+          that.setData({ messages, inputText: '' });
+        }
+      });
     },
 
     onInput(event) {

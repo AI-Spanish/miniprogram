@@ -51,23 +51,21 @@ Page({
     sendVoice(res){
       var that = this;
       console.log(res);
+      const {tempFilePath,duration} = res;
       wx.saveFile({        
-        tempFilePath: res.tempFilePath,
+        tempFilePath: tempFilePath,
         success:(res)=>{
           var inputMp3Path = res.savedFilePath;
-
-          that.setData({
-            isRecording: false
-          });
+          var wavlen = (duration/1000.0).toFixed(2);
+   
+          //刷新列表
+          const { messages} = that.data;
+          messages.push({ id: Date.now(), user: '我', text: that.formatTxt('[语音]'), type:'say', wav: inputMp3Path, wavlen:wavlen});
+          that.setData({ messages, inputText: '', isRecording: false });
 
           wx.showToast({
             title: '录音完成！',
           })
-    
-          //刷新列表
-          const { messages} = that.data;
-          messages.push({ id: Date.now(), user: '我', text: that.formatTxt('[语音]'), type:'say', wav: inputMp3Path});
-          that.setData({ messages, inputText: '' });
         }
       });
     },
@@ -88,7 +86,7 @@ Page({
       if (_inputText) {
 
         //1 刷新列表
-        messages.push({ id: Date.now(), user: '我', text: this.formatTxt(_inputText), type:'say' });
+        messages.push({ id: Date.now(), user: '我', text: this.formatTxt(_inputText), type:'say', wav:undefined, wavlen:'0.00' });
         this.setData({ messages, inputText: '' });
 
         //2 把inputText发到服务器，获取echo

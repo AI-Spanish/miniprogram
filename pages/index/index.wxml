@@ -1,54 +1,15 @@
 <view class="container">
   <view class="topics">
-    <button bindtap="navigateToTopic" data-topic="1">
+    <button wx:for="{{topics}}" wx:key="id" bindtap="navigateToTopic" data-topic="{{item.id}}">
         <view class="cell">
-            <label class="cell-label">话题1</label>
-            <label class="cell-content">自我介绍</label>
+            <label class="cell-label">{{item.label}}</label>
+            <label class="cell-content">{{item.content}}</label>
         </view>
         <view class="img">
-            <image src="/images/1.png"/>
+            <image src="{{item.ico}}"/>
         </view>
     </button>
-    <button bindtap="navigateToTopic" data-topic="2">
-        <view class="cell">
-            <label class="cell-label">话题2</label>
-            <label class="cell-content">爱好</label>
-        </view>
-        <view class="img">
-            <image src="/images/2.png"/>
-        </view>
-    </button>
-    <button bindtap="navigateToTopic" data-topic="3">
-        <view class="cell">
-            <label class="cell-label">话题3</label>
-            <label class="cell-content">生活日常</label>
-        </view> 
-        <view class="img">
-            <image src="/images/3.png"/>
-        </view>
-    </button>
-    <button bindtap="navigateToTopic" data-topic="4">
-        <view class="cell">
-            <label class="cell-label">话题4</label>
-            <label class="cell-content">食物</label>
-        </view>
-        <view class="img">
-            <image src="/images/4.png"/>
-        </view>
-    </button>
-    <button bindtap="navigateToTopic" data-topic="5">    
-        <view class="cell">
-            <label class="cell-label">话题5</label>
-            <label class="cell-content">这是一个测试</label>
-        </view>
-        <view class="img">
-            <image src="/images/5.png"/>
-        </view>
-    </button>
-
   </view>
-
-
 
 
   <!-- <view class="footer">

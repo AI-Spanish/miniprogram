@@ -1,5 +1,7 @@
 Page({
-    data: {},
+    data: {
+      topics:[]
+    },
     navigateToTopic(event) {
       let topic = event.currentTarget.dataset.topic;
         wx.navigateTo({
@@ -31,6 +33,11 @@ Page({
           })
         })
       }
+
+      this.setData({topics:[]})
+      setTimeout(() => {
+        this._loadTopicList();
+    }, 0)
     },
 
     onLoad(options) {
@@ -47,10 +54,6 @@ Page({
         this.setData({
             motto: "" + token
         })
-
-        setTimeout(() => {
-            this._loadTopicList();
-        }, 1000)
     },
 
     _loadTopicList(){
@@ -58,5 +61,16 @@ Page({
         /*wx.reLaunch({
             url: '/pages/topic/topic'
         })*/
+        this.setData(
+          {
+            topics:[
+            {id:1, label:'话题1', content:'自我介绍', ico:'/images/1.png'},
+            {id:2, label:'话题2', content:'爱好', ico:'/images/2.png'},
+            {id:3, label:'话题3', content:'生活日常', ico:'/images/3.png'},
+            {id:4, label:'话题4', content:'美食', ico:'/images/4.png'},
+            {id:5, label:'话题5', content:'学习和工作', ico:'/images/5.png'}
+          ]
+          }
+        );
     }
 });

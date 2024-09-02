@@ -1,0 +1,10 @@
+module.exports = {
+  formatTime: function(timestamp) {
+    var d = getDate(timestamp);
+    return [d.getFullYear(), d.getMonth() + 1, d.getDate()].join('-') + ' ' + [d.getHours(), d.getMinutes(), d.getSeconds()].join(':');
+  },
+  formatTime2: function(timestamp) {
+    var d = getDate(timestamp);
+    return [d.getHours(), d.getMinutes()].join(':');
+  }
+}

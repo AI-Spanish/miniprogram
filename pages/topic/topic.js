@@ -142,36 +142,44 @@ Page({
       //1 从数据集合中线性查找，找到消息ID对应的消息
       const { messages } = this.data;    //数据集合
       let ele = messages.find(e => e.id==id);
-      if(ele== undefined){
+      if(ele==undefined){
         return;
       } 
 
       //2 根据点击图标的类型，分别处理
       if(name=="sound") {
         console.log("点击了声音按钮" + id);
-      }else if(name=="wave"){
+      }
+
+      else if(name=="wave"){
         console.log("点击了音频按钮" + id);
-        getAiEchoByMsg(ele.text).then(res=>{
-            console.log(res)
-            ele.wav = res;
-            this.setData({ messages});
-        }).catch(err=>{
-            ele.wav = undefined;
-            this.setData({ messages});
-        }) 
-      }else if(name=="play-circle-filled"){
+        if(ele.wav==undefined){
+          getAiEchoByMsg(ele.text).then(res=>{
+              ele.wav = res;
+              this.setData({ messages});
+          }).catch(err=>{
+              ele.wav = undefined;
+              this.setData({ messages});
+          }) 
+        }
+        if(ele.wav!==undefined){
+          this.innerAudioContext.stop();
+          this.innerAudioContext.src = ele.wav;   
+          this.innerAudioContext.play();
+        }
+      }
+
+      else if(name=="play-circle-filled"){
         console.log("点击了播放按钮" + id);
         console.log(ele)
-        if(ele.wav==undefined)
-            return
-        this.innerAudioContext.stop();
-        this.innerAudioContext.src = ele.wav;   
-        //this.innerAudioContext.src = 'https://www.cambridgeenglish.org/images/153149-movers-sample-listening-test-vol2.mp3';
-        //http://downsc.chinaz.net/files/download/sound1/201206/1638.mp3
-        //ele.wav=undefined;
-        //this.setData({ messages });
-        this.innerAudioContext.play();
-      }else if(name=="file-copy"){
+        if(ele.wav!==undefined){
+          this.innerAudioContext.stop();
+          this.innerAudioContext.src = ele.wav;   
+          this.innerAudioContext.play();          
+        }
+      }
+      
+      else if(name=="file-copy"){
         console.log(`拷贝内容:${ele.text}`);
         wx.setClipboardData({
           data: `${ele.text}`,

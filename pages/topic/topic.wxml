@@ -11,12 +11,12 @@
                         <!--{{item.user}}-->
                         <t-icon name="/images/1.png" data-name="user" bind:click="onIconTap" size="48rpx" />
                     </view>
-                    <view style="height: 24px; width: 350rpx; background-color:whitesmoke;border-radius: 12px; padding-inline: 5px;margin-right: 10px;">
+                    <view style="height: 24px; width: 300rpx; background-color:whitesmoke;border-radius: 12px; padding-inline: 5px;margin-right: 10px;">
                         <view style="display: inline-flex; flex-direction: row-reverse; margin: 5px 5px;">
                             <t-icon name="play-circle-filled" size="30rpx" data-name="play-circle-filled" data-id="{{item.id}}" bind:click="onIconTap" />
                             <label style="margin-top:-4px;margin-right: 5px; height: 30rpx;">{{item.wavlen}}</label>
                             <t-icon name="/images/wave.png" data-name="wave" data-id="{{item.id}}" bind:click="onIconTap" style="width: 180rpx;height: 30rpx;" />
-                            <t-icon name="sound" size="30rpx" data-name="sound" data-id="{{item.id}}" bind:click="onIconTap" />
+                            <!--t-icon name="sound" size="30rpx" data-name="sound" data-id="{{item.id}}" bind:click="onIconTap" /-->
                         </view>
                     </view>
                 </view>
@@ -50,12 +50,12 @@
                         </view>
                     </view>
 
-                    <view wx:else style="height: 24px; width: 350rpx; background-color:#FFA31A;border-radius: 12px; padding-inline: 5px;margin-left: 10px;">
+                    <view wx:else style="height: 24px; width: 300rpx; background-color:#FFA31A;border-radius: 12px; padding-inline: 5px;margin-left: 10px;">
                         <view style="display: inline-flex; flex-direction: row; margin: 5px 5px;">
                             <t-icon name="play-circle-filled" size="30rpx" data-name="play-circle-filled" data-id="{{item.id}}" bind:click="onIconTap" />
-                            <label style="margin-top:-4px;margin-left: 5px; height: 30rpx;">{{0.05}}</label>
+                            <label style="margin-top:-4px;margin-left: 5px; height: 30rpx;">{{item.wavlen}}</label>
                             <t-icon name="/images/wave.png" data-name="wave" data-id="{{item.id}}" bind:click="onIconTap" style="width: 180rpx;height: 30rpx;" />
-                            <t-icon name="sound" size="30rpx" data-name="sound" data-id="{{item.id}}" bind:click="onIconTap" /> 
+                            <!--t-icon name="sound" size="30rpx" data-name="sound" data-id="{{item.id}}" bind:click="onIconTap" /--> 
                         </view>
                     </view>
 

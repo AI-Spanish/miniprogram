@@ -1,5 +1,7 @@
 import {getWaveResult, postChatMsgToAi,getAiEchoByMsg } from '../../api/topics';
 
+const dayjs = require('dayjs');
+
 Page({
     data: {
       topic: '',      //标题
@@ -84,6 +86,7 @@ Page({
       const { inputText, messages } = this.data;
       let _inputText = inputText.trim();     //截断空格
       if (_inputText) {
+
         //1 刷新列表
         messages.push({ id: Date.now(), user: '我', text: this.formatTxt(_inputText), type:'say' });
         this.setData({ messages, inputText: '' });

@@ -18,7 +18,8 @@ Page({
     recorderManager: undefined,
 
     onLoad(arg) {
-      this.setData({ 
+      this.setData({
+        navigationBarHeight: wx.getWindowInfo().statusBarHeight + 44,
         topic: arg.topic,
         isRecording: false
       });
@@ -46,6 +47,10 @@ Page({
           })
         })
       }
+    },
+
+    onIconTapReturn(){
+      wx.navigateBack();
     },
 
     sendVoice(res){
@@ -87,7 +92,7 @@ Page({
 
         //1 刷新列表
         messages.push({ id: Date.now(), user: '我', text: this.formatTxt(_inputText), type:'say', wav:undefined, wavlen:'0.00' });
-        this.setData({ messages, inputText: '' });
+        this.setData({ messages, inputText: '' , scrollIntoView:"recordBottomScroll"});
 
         //2 把inputText发到服务器，获取echo
         //  使用async是为了使用异步调用，以便让主线程能够先刷新一次列表。也可使用setTimeout(()=>{...},0)语法
@@ -96,11 +101,11 @@ Page({
               console.log(res)  //直接是字符串？？？
               let rt = res
               messages.push({ id: Date.now(), user: '西语AI', text: this.formatTxt(rt), type:'echo' });
-              this.setData({ messages });
+              this.setData({ messages , scrollIntoView:"recordBottomScroll"});
             }).catch(err=>{
               console.log(err)
               messages.push({ id: Date.now(), user: '西语AI', text: `<div style="display:flex;align-items: center;">服务器不知所踪...<img src="/images/err.jpg" style="height:48px" /></div>`, type:'echo' });
-              this.setData({ messages });
+              this.setData({ messages , scrollIntoView:"recordBottomScroll"});
             })
           } // end of postChatMsgToAi
         )();  //end of async

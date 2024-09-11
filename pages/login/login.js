@@ -1,17 +1,17 @@
 import {login} from '../../api/user'
+import {navigationBarHeight} from '../../config/consts'
 
 //微信登录： https://zhuanlan.zhihu.com/p/620589067
 
 Page({
     openId: "",
     data: {
-        navigationBarHeight: 100
+        navigationBarHeight: navigationBarHeight
     },
 
     onLoad(options) {
-      const windowInfo = wx.getWindowInfo();
       this.setData({
-        navigationBarHeight: windowInfo.statusBarHeight + 44,
+        navigationBarHeight: wx.getWindowInfo().statusBarHeight + 44,
       });
     },
 

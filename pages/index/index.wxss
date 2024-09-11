@@ -1,66 +1,73 @@
 .container {
     display: flex;
     flex-flow: nowrap column;
-    height: 90rpx;
+    height: 90%;
+    align-content: stretch;
 }
 
 .topics {
     display: flex;
     flex-flow: nowrap column;
     width: 91%;
-    margin-top: -40rpx;
+    height: 120%;
+    margin-top: -20%;
+    background-color: transparent;
 }
 
-.topics button{    
+.topics .item{    
     margin: 10px 0;
     background-color: transparent;
-    border-radius: 5px;
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 0.5px;
+    border-color: #f7c98e;
 }
 
 .cell {
     position: absolute;
     z-index: 1;
     background-color:transparent;
-    height: 72px;
+    margin: 10px 20px;
+    height: auto;
 }
 
 .cell-label {
     display:flex;
-    color: rgba(0, 0, 255, 0.6);
     text-align: left;
     vertical-align: top;
-    margin-top: 0;
-    margin-left: 0;    
     font-size: 12px;
+    font-weight:bolder;
 }
 
 .cell-content {
     display:flex;
     flex-direction: row;
-    color: rgba(255, 0, 0, 0.9);
-    font-size: 25px;
-    margin-top: -30rpx;
-    margin-left: 0rpx;
     vertical-align: center;
+    font-size: 12px;
+    font-weight: lighter;
 }
 
 .img {
     position:relative;
-    margin-left: 80%;
-    margin-top: 1rpx;
+    margin-left: 92%;
+    margin-top: 20rpx;
     margin-bottom: 1rpx;
     z-index: 2;
-    background-color: transparent;
+    background-color: red;
     display:flex;
     flex-direction: row row-reverse;
-    /*border: 1px solid red ;*/
-    height: 64px;
-    width: 64px;
+    height: 100px;
+    width: 0px;
 }
 
 .img image{
     height: 64px;
     width: 64px;
+}
+
+.img t-icon{
+  height: 64px;
+  width: 64px;
 }
 
 .header {

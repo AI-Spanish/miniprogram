@@ -2,7 +2,7 @@
 
 <view class="container">
     <!--view class="header">话题 {{topic}}</view-->
-    <scroll-view class="chat-box" scroll-y="{{true}}" scroll-into-view="recordBottomScroll">
+    <scroll-view class="chat-box" scroll-y="{{true}}" scroll-into-view="{{scrollIntoView}}">
         <view class="message" wx:for="{{messages}}" wx:key="id">
             <!-- 这是用户的发言 -->
             <view class="text" wx:if="{{item.type=='say'}}">

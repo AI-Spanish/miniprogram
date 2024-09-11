@@ -5,6 +5,9 @@ Page({
       accent: ''
     },
     onLoad() {
+      this.setData({
+        navigationBarHeight: wx.getWindowInfo().statusBarHeight + 44,
+      });
       // 获取之前保存的设置
       const settings = wx.getStorageSync('settings') || {};
       this.setData({
@@ -12,6 +15,7 @@ Page({
         voice: settings.voice || '',
         accent: settings.accent || ''
       });
+
     },
     onShow(){
       if (typeof this.getTabBar === 'function') {

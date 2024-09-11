@@ -1,20 +1,24 @@
-<view class="container">
-  <view class="topics">
-    <button wx:for="{{topics}}" wx:key="id" bindtap="navigateToTopic" data-topic="{{item.id}}">
+<!--标题栏-->
+<view style="height: {{navigationBarHeight}}px; background-color: transparent; display: flex; flex-direction: column;">
+  <view style="display: flex; flex-direction: row;margin-top: 60rpx;margin-left: 20rpx;">
+    <label style="font-size: large; font-weight: bolder; margin-left: 20rpx;margin-right: 20rpx;">Chat History</label>
+    <t-icon style="color: black;" name="add-circle" size="48rpx" bind:click="onIconTapAdd" />
+  </view>
+</view>
+
+<view class="container" >
+  <scroll-view scroll-y="{{true}}" class="topics" enable-flex="{{true}}" scroll-into-view="{{scrollIntoView}}" >
+    <view class="item" wx:for="{{topics}}" wx:key="id" bindtap="navigateToTopic" data-topic="{{item.id}}">
         <view class="cell">
-            <label class="cell-label">{{item.label}}</label>
-            <label class="cell-content">{{item.content}}</label>
+            <rich-text class="cell-label">{{item.label}}</rich-text>
+            <rich-text class="cell-content">{{item.content}}</rich-text>
         </view>
         <view class="img">
-            <image src="{{item.ico}}"/>
+            <!--image src="{{item.ico}}"/-->
+            <t-icon style="color: #f7c98e;" name="more" size="48rpx" bind:click="navigateToTopic" data-topic="{{item.id}}" />
         </view>
-    </button>
-  </view>
+    </view>
+    <view id="recordBottomScroll" style="width: 1rpx; height: 100rpx"></view>
+  </scroll-view>
 
-
-  <!-- <view class="footer">
-    <button bindtap="navigateToPractice">练习</button>
-    <button bindtap="navigateToRecords">记录</button>
-    <button bindtap="navigateToSettings">设置</button>
-  </view> -->
 </view>

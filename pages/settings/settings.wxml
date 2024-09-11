@@ -1,3 +1,7 @@
+<!--标题栏-->
+<view style="height: {{navigationBarHeight}}px; background-color: transparent; display: flex; flex-direction: column;">
+</view>
+
 <view class="container">
   <view class="setting-item">
     <view class="title">对话难度</view>

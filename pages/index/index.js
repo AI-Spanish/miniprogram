@@ -1,6 +1,10 @@
+import {navigationBarHeight} from '../../config/consts'
+
 Page({
     data: {
-      topics:[]
+      navigationBarHeight: wx.getWindowInfo().statusBarHeight + 44,
+      topics:[],
+      scrollPos:100
     },
     navigateToTopic(event) {
       let topic = event.currentTarget.dataset.topic;
@@ -63,14 +67,53 @@ Page({
         })*/
         this.setData(
           {
-            topics:[
-            {id:1, label:'话题1', content:'自我介绍', ico:'/images/1.png'},
-            {id:2, label:'话题2', content:'爱好', ico:'/images/2.png'},
-            {id:3, label:'话题3', content:'生活日常', ico:'/images/3.png'},
-            {id:4, label:'话题4', content:'美食', ico:'/images/4.png'},
-            {id:5, label:'话题5', content:'学习和工作', ico:'/images/5.png'}
-          ]
+            topics: [{
+                id: 1,
+                label: 'How do you say "where is the bus stop" in spanish?',
+                content: 'With these 100+ ChatGPT prompts for Crypo Trading!',
+                ico: '/images/1.png'
+              },
+              {
+                id: 2,
+                label: 'What are some other orange-coloured foods?',
+                content: 'I am not sure what the funniest joke is, but i can try to generate one for you ,Here it is ...',
+                ico: '/images/2.png'
+              },
+              {
+                id: 3,
+                label: 'How do you say "where is the bus stop" in spanish?',
+                content: 'With these 100+ ChatGPT prompts for Crypo Trading! With these 100+ ChatGPT prompts for Crypo Trading! With these 100+ ChatGPT prompts for Crypo Trading! With these 100+ ChatGPT prompts for Crypo Trading! ',
+                ico: '/images/3.png'
+              },
+              {
+                id: 4,
+                label: 'How do you say "where is the bus stop" in spanish?',
+                content: 'I am not sure what the funniest joke is, but i can try to generate one for you ,Here it is ...',
+                ico: '/images/4.png'
+              },
+              {
+                id: 5,
+                label: 'How do you say "where is the bus stop" in spanish?',
+                content: 'I am not sure what the funniest joke is, but i can try to generate one for you ,Here it is ...',
+                ico: '/images/5.png'
+              }
+            ],
+            scrollIntoView:"recordBottomScroll"
           }
         );
-    }
+    },
+
+    onIconTapAdd : function(arg){
+      const {topics} = this.data;
+      topics.push({
+        id: Date.now(),
+        label: 'How do you say "where is the bus stop" in spanish?',
+        content: 'I am not sure what the funniest joke is, but i can try to generate one for you ,Here it is ...',
+        ico: '/images/5.png'
+      });
+      this.setData({topics,scrollIntoView:""});
+      this.setData({scrollIntoView:"recordBottomScroll"});
+
+    },
+
 });

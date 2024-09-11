@@ -6,12 +6,12 @@ import {navigationBarHeight} from '../../config/consts'
 Page({
     openId: "",
     data: {
-        navigationBarHeight: navigationBarHeight
+        navigationBarHeight: 0
     },
 
     onLoad(options) {
       this.setData({
-        navigationBarHeight: wx.getWindowInfo().statusBarHeight + 44,
+        navigationBarHeight: navigationBarHeight(),
       });
     },
 

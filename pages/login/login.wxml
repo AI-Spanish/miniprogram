@@ -1,4 +1,8 @@
-<view class="container" style="margin-top: {{navigationBarHeight}}px;">
+<!--标题栏-->
+<view style="height: {{navigationBarHeight}}px; background-color: transparent; display: flex; flex-direction: column;">
+</view>
+
+<view class="container">
   <view class="main">
     <view class="titleBar">
       <view class="title"> Welcome to AI 西语</view>

@@ -2,9 +2,8 @@ import {navigationBarHeight} from '../../config/consts'
 
 Page({
     data: {
-      navigationBarHeight: wx.getWindowInfo().statusBarHeight + 44,
-      topics:[],
-      scrollPos:100
+      navigationBarHeight: navigationBarHeight(),
+      topics:[]
     },
     navigateToTopic(event) {
       let topic = event.currentTarget.dataset.topic;
@@ -41,7 +40,7 @@ Page({
       this.setData({topics:[]})
       setTimeout(() => {
         this._loadTopicList();
-    }, 0)
+      }, 0)
     },
 
     onLoad(options) {
@@ -53,6 +52,10 @@ Page({
             })
             return
         }
+
+        this.setData({
+          navigationBarHeight: navigationBarHeight(),
+        })
 
         let token = wx.getStorageSync('Token');
         this.setData({

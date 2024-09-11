@@ -1,5 +1,5 @@
 import {getWaveResult, postChatMsgToAi,getAiEchoByMsg } from '../../api/topics';
-
+import {navigationBarHeight} from '../../config/consts'
 const dayjs = require('dayjs');
 
 Page({
@@ -19,7 +19,7 @@ Page({
 
     onLoad(arg) {
       this.setData({
-        navigationBarHeight: wx.getWindowInfo().statusBarHeight + 44,
+        navigationBarHeight: navigationBarHeight(),
         topic: arg.topic,
         isRecording: false
       });

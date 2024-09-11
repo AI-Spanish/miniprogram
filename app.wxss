@@ -20,35 +20,16 @@ page {
 
 }
 
-.container {
-	flex: 1;
-	background-color: #fff;
-	border-radius: 20px 20px 0px 0px;
-	padding: 40rpx 30rpx;
-
-}
-
 /**层叠样式表css app.wxss**/
 .container {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    padding: 200rpx 0;
-    box-sizing: border-box;
-  } 
- /* 
-  .button-view {
-      display: flex;
-      flex-direction: row;
-      padding: 24rpx;
-  }
-  
-  .button-view .btns{
-      margin-left: 5rpx;
-      margin-right: 5rpx;
-  }
-
-  **/
-  
+  height: 100%;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  box-sizing: border-box;
+  background-color: #fff;
+  border-radius: 20px 20px 0px 0px;
+  padding: 20rpx;
+}

@@ -1,3 +1,5 @@
+import {navigationBarHeight} from '../../config/consts'
+
 Page({
     data: {
         records: [],
@@ -12,7 +14,7 @@ Page({
         // 假设记录存储在本地存储中
         const records = wx.getStorageSync('records') || [];
         this.setData({
-            navigationBarHeight: wx.getWindowInfo().statusBarHeight + 44,
+            navigationBarHeight: navigationBarHeight(),
             records
         });
     },

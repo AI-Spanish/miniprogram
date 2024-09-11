@@ -3,14 +3,15 @@
     flex-flow: nowrap column;
     height: 90%;
     align-content: stretch;
+    padding: 20rpx;
 }
 
 .topics {
     display: flex;
     flex-flow: nowrap column;
     width: 91%;
-    height: 120%;
-    margin-top: -20%;
+    height: 90%;
+    margin-top: 0%;
     background-color: transparent;
 }
 

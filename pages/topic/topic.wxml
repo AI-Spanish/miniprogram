@@ -14,7 +14,7 @@
                     <view style="height: 24px; width: 300rpx; background-color:whitesmoke;border-radius: 12px; padding-inline: 5px;margin-right: 10px;">
                         <view style="display: inline-flex; flex-direction: row-reverse; margin: 5px 5px;">
                             <t-icon name="play-circle-filled" size="30rpx" data-name="play-circle-filled" data-id="{{item.id}}" bind:click="onIconTap" />
-                            <label style="margin-top:-4px;margin-right: 5px; height: 30rpx;">{{item.wavlen}}</label>
+                            <label style="margin-top:-2px;margin-right: 5px; height: 30rpx;">{{item.wavlen}}</label>
                             <t-icon name="/images/wave.png" data-name="wave" data-id="{{item.id}}" bind:click="onIconTap" style="width: 180rpx;height: 30rpx;" />
                             <!--t-icon name="sound" size="30rpx" data-name="sound" data-id="{{item.id}}" bind:click="onIconTap" /-->
                         </view>
@@ -26,8 +26,8 @@
                 </view>
 
                 <view style="display: flex; flex-direction: row-reverse">
-                    <button plain="true" open-type="share" style="border:none; background-color: transparent; height: 48rpx; width: 80rpx; padding: 0%;"><t-icon name="share" size="48rpx"/></button>
-                    <t-icon name="file-copy" size="48rpx" data-name="file-copy" data-id="{{item.id}}" bind:click="onIconTap" />
+                    <button plain="true" open-type="share" style="border:none; background-color: transparent; height: 40rpx; width: 80rpx; padding: 0%;"><t-icon name="share" size="40rpx"/></button>
+                    <t-icon name="file-copy" size="40rpx" data-name="file-copy" data-id="{{item.id}}" bind:click="onIconTap" />
                     <label style="width: 100%;"></label>
                     <label>{{filters.formatTime2(item.id)}}</label>
                 </view>
@@ -53,7 +53,7 @@
                     <view wx:else style="height: 24px; width: 300rpx; background-color:#FFA31A;border-radius: 12px; padding-inline: 5px;margin-left: 10px;">
                         <view style="display: inline-flex; flex-direction: row; margin: 5px 5px;">
                             <t-icon name="play-circle-filled" size="30rpx" data-name="play-circle-filled" data-id="{{item.id}}" bind:click="onIconTap" />
-                            <label style="margin-top:-4px;margin-left: 5px; height: 30rpx;">{{item.wavlen}}</label>
+                            <label style="margin-top:-2px;margin-left: 5px; height: 30rpx;">{{item.wavlen}}</label>
                             <t-icon name="/images/wave.png" data-name="wave" data-id="{{item.id}}" bind:click="onIconTap" style="width: 180rpx;height: 30rpx;" />
                             <!--t-icon name="sound" size="30rpx" data-name="sound" data-id="{{item.id}}" bind:click="onIconTap" /--> 
                         </view>
@@ -66,8 +66,8 @@
                 </view>
 
                 <view style="display: flex; flex-direction: row">
-                    <button plain="true" open-type="share" style="border:none; background-color: transparent; height: 48rpx; width: 80rpx; padding: 0%;"><t-icon name="share" size="48rpx"/></button>
-                    <t-icon name="file-copy" size="48rpx" data-name="file-copy" data-id="{{item.id}}" bind:click="onIconTap" />
+                    <button plain="true" open-type="share" style="border:none; background-color: transparent; height: 40rpx; width: 80rpx; padding: 0%;"><t-icon name="share" size="40rpx"/></button>
+                    <t-icon name="file-copy" size="40rpx" data-name="file-copy" data-id="{{item.id}}" bind:click="onIconTap" />
                     <label style="width: 100%;"></label>
                     <label>{{filters.formatTime2(item.id)}}</label>
                 </view>

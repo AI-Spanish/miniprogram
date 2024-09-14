@@ -13,23 +13,23 @@ import {
  * @return Promise
  */
 export function login() {
-	return new Promise(async (resolve, reject) => {
-		let wxLoginRes = await wx.login().catch(err => reject(err));
-		if (wxLoginRes) {
-            console.log(wxLoginRes);
-			let response = await request({
-				noToken: true,
-				url: '/login', 
-				method: "POST",
-				data: {
-					code: wxLoginRes.code
-				}
-			}).catch(err => reject(err));
-			if (response) {
-				resolve(response);
-			}
-		}
-	});
+  return new Promise(async (resolve, reject) => {
+    let wxLoginRes = await wx.login().catch(err => reject(err));
+    if (wxLoginRes) {
+      console.log(wxLoginRes);
+      let response = await request({
+        noToken: true,
+        url: '/login',
+        method: "POST",
+        data: {
+          code: wxLoginRes.code
+        }
+      }).catch(err => reject(err));
+      if (response) {
+        resolve(response);
+      }
+    }
+  });
 }
 
 // 仅演示调用格式

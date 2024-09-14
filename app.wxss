@@ -32,4 +32,5 @@ page {
   background-color: #fff;
   border-radius: 20px 20px 0px 0px;
   padding: 20rpx;
+  font-size: 14px;
 }

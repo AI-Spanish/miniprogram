@@ -40,7 +40,8 @@ Page({
     _loginSuccess: function(data) {
         // 保存登录信息
         wx.setStorageSync('token', data.token);
-        //wx.setStorageSync('openid', data.openid);
+        wx.setStorageSync('openid', data.openid);
+        wx.setStorageSync('id', data.id);
 
         // 显示提示
         wx.showToast({
